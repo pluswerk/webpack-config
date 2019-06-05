@@ -27,19 +27,15 @@ module.exports = (env, argv) => {
       rules: [
         partialConfig.rules.vue,
         partialConfig.rules.vueStyleLoader,
-        partialConfig.rules.styleLoader,
+        partialConfig.rules.miniCssExtract,
         partialConfig.rules.ts(autoFix),
-        // partialConfig.rules.vue,
-        // partialConfig.rules.vueStyleLoader,
-        // partialConfig.rules.miniCssExtract,
-        // partialConfig.rules.ts(autoFix),
       ],
     },
     plugins: [
-      // new MiniCssExtractPlugin({
-      //   filename: '[name].css?bust=[contenthash]',
-      //   chunkFilename: '[id].css',
-      // }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css?bust=[contenthash]',
+        chunkFilename: '[id].css',
+      }),
       new StyleLintPlugin(partialConfig.plugins.stylelint(autoFix)),
       new VueLoaderPlugin(),
       new webpack.DefinePlugin(partialConfig.plugins.define),
