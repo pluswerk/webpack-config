@@ -14,12 +14,13 @@ yarn add @pluswerk/webpack-config --dev
     "build:dev:watch": "webpack --watch --mode development --config node_modules/@pluswerk/webpack-config/webpack.config.js --hide-modules",
     "serve": "webpack-dev-server --config node_modules/@pluswerk/webpack-config/webpack.hmr.config.js --mode development --colors --progress --inline --hide-modules"
   },
-  "sideEffects": true, //https://github.com/vuejs/vuepress/issues/718
+  "sideEffects": true,
   "devDependencies": {
     "@pluswerk/webpack-config": "file:./webpack-config"
   }
 }
 ````
+
 **build.settings.js**
 ````js
 module.exports = {
@@ -64,4 +65,5 @@ module.exports = {
 
 #TODO:
 - dosn't lint scss inside vue
+- `sideEffects:true` https://github.com/vuejs/vuepress/issues/718
 
