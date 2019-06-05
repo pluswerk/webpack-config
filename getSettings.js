@@ -23,6 +23,7 @@ const defaultSettings = {
   envPath: '.env',
   serverActiveEnv: 'NODE_ACTIVE=TRUE',
   serverInactiveEnv: 'NODE_ACTIVE=FALSE',
+  webpackConfig: {},
 };
 
 module.exports = function () {

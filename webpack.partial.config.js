@@ -36,7 +36,7 @@ module.exports = (runDirectory, settings) => ({
       'Access-Control-Allow-Origin': '*',
     },
     before: () => {
-      require('./setNodeActiveEnvVar')(true);
+      require('./setNodeActiveEnvVar')(settings, true);
     },
   },
   plugins: {

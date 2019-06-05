@@ -8,12 +8,13 @@ yarn add @pluswerk/webpack-config --dev
 ````json
 {
   "scripts": {
-    "build": "./node_modules/.bin/webpack --mode production --config node_modules/@pluswerk/webpack-config/webpack.config.js",
-    "build:watch": "./node_modules/.bin/webpack -w --mode production --config node_modules/@pluswerk/webpack-config/webpack.config.js",
-    "build:dev": "./node_modules/.bin/webpack --mode development --config node_modules/@pluswerk/webpack-config/webpack.config.js",
-    "build:dev:watch": "./node_modules/.bin/webpack -w --mode development --config node_modules/@pluswerk/webpack-config/webpack.config.js",
-    "serve": "webpack-dev-server --config node_modules/@pluswerk/webpack-config/webpack.hmr.config.js --mode development --colors --progress --inline"
+    "build": "webpack --mode production --config node_modules/@pluswerk/webpack-config/webpack.config.js --hide-modules",
+    "build:watch": "webpack --watch --mode production --config node_modules/@pluswerk/webpack-config/webpack.config.js --hide-modules",
+    "build:dev": "webpack --mode development --config node_modules/@pluswerk/webpack-config/webpack.config.js --hide-modules",
+    "build:dev:watch": "webpack --watch --mode development --config node_modules/@pluswerk/webpack-config/webpack.config.js --hide-modules",
+    "serve": "webpack-dev-server --config node_modules/@pluswerk/webpack-config/webpack.hmr.config.js --mode development --colors --progress --inline --hide-modules"
   },
+  "sideEffects": true, //https://github.com/vuejs/vuepress/issues/718
   "devDependencies": {
     "@pluswerk/webpack-config": "file:./webpack-config"
   }
@@ -57,6 +58,7 @@ module.exports = {
   envPath: '.env',
   serverActiveEnv: 'NODE_ACTIVE=TRUE',
   serverInactiveEnv: 'NODE_ACTIVE=FALSE',
+  webpackConfig: {},
 }
 ````
 

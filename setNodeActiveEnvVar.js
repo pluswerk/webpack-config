@@ -1,7 +1,7 @@
 const fs = require('fs');
 const os = require('os');
 
-module.exports = function (state = false) {
+module.exports = function (settings, state = false) {
   let test = 'serverActiveEnv';
   let set = 'serverInactiveEnv';
   if (state) {

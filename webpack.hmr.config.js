@@ -2,6 +2,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const merge = require('webpack-merge');
 
 require('dotenv').config();
 const settings = require('./getSettings')();
@@ -15,11 +16,10 @@ const partialConfig = require('./webpack.partial.config.js')(runDirectory, setti
 module.exports = (env, argv) => {
   const autoFix = typeof argv.fix !== 'undefined';
 
-  return {
+  const resultingWebpackConfig = merge({
     context: runDirectory,
     entry: settings.entry,
     devtool: 'source-map',
-    mode: 'development',
     resolve: partialConfig.resolve,
     output: partialConfig.output(`${process.env.NODE_DOMAIN}/`),
     performance: partialConfig.performance,
@@ -37,5 +37,7 @@ module.exports = (env, argv) => {
       new VueLoaderPlugin(),
       new webpack.DefinePlugin(partialConfig.plugins.define),
     ],
-  };
-}
+  }, settings.webpackConfig || {});
+
+  return resultingWebpackConfig;
+};
