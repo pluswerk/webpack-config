@@ -14,10 +14,7 @@ yarn add @pluswerk/webpack-config --dev
     "build:dev:watch": "webpack --watch --mode development --config node_modules/@pluswerk/webpack-config/webpack.config.js --hide-modules",
     "serve": "webpack-dev-server --config node_modules/@pluswerk/webpack-config/webpack.hmr.config.js --mode development --colors --progress --inline --hide-modules"
   },
-  "sideEffects": true,
-  "devDependencies": {
-    "@pluswerk/webpack-config": "file:./webpack-config"
-  }
+  "sideEffects": true
 }
 ````
 
