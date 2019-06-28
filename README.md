@@ -56,6 +56,11 @@ module.exports = {
   envPath: '.env',
   serverActiveEnv: 'NODE_ACTIVE=TRUE',
   serverInactiveEnv: 'NODE_ACTIVE=FALSE',
+  // more info on definePlugin: https://webpack.js.org/plugins/define-plugin/
+  definePlugin: {
+    BOOLEAN_ENV: !!process.env.BOOLEAN_ENV,
+    STRING_ENV: JSON.stringify(process.env.STRING_ENV),
+  },
   webpackConfig: {},
 }
 ````

@@ -35,7 +35,7 @@ module.exports = (env, argv) => {
     plugins: [
       new StyleLintPlugin(partialConfig.plugins.stylelint(autoFix)),
       new VueLoaderPlugin(),
-      new webpack.DefinePlugin(partialConfig.plugins.define),
+      new webpack.DefinePlugin(settings.definePlugin || {}),
     ],
   }, settings.webpackConfig || {});
 

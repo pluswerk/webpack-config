@@ -46,9 +46,6 @@ module.exports = (runDirectory, settings) => ({
       files: settings.directory.scss.replace(/(\/)$/g, '') + '/**/*.{vue-scss,vue,htm,html,css,sss,less,scss,sass}',
       fix: autoFix,
     }),
-    define: {
-      EXECUTE_SENTRY: !!process.env.EXECUTE_SENTRY,
-    },
   },
   rules: {
     vue: {
