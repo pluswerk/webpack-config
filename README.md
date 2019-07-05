@@ -65,7 +65,44 @@ module.exports = {
 }
 ````
 
-#TODO:
+# Example .vue file
+
+`Component.vue`
+````.vue
+<!-- currently it is not possible to use inline Typescript files. -->
+<script lang="ts" src="./Component.ts"></script>
+
+<template>
+  <div class="background--red">
+    Green
+  </div>
+</template>
+
+<!-- to bundle vue's css into js and not bundle "normal" css, it is required to set the lang to vue-scss -->
+<style lang="vue-scss" type="text/scss" scoped>
+  .background--red { 
+    background: red;
+  }
+</style>
+````
+
+`Component.ts`
+````typescript
+import Vue from 'vue';
+import Component from 'vue-class-component';
+
+@Component({
+  props: {
+    value: Array,
+  },
+})
+export default class FilterMultiSelect extends Vue {
+  get internalValue() {
+    return this.$props.value.filter(el => !!el);
+  }
+}
+````
+
+# TODO:
 - dosn't lint scss inside vue
 - `sideEffects:true` https://github.com/vuejs/vuepress/issues/718
-
