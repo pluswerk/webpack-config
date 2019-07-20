@@ -33,11 +33,50 @@ module.exports = {
 ````
 
 # Overwrite configs:
-you can overwrite `tsconfig.json`, `tslint.json` and `stylelint.config.js` .
+you can overwrite `tsconfig.json`, `tslint.json` and `stylelint.config.js`.
 - Either name the file exactly the same and put it in the root directory.
 - Or you can adjust the path in build.settings.js and put the file wherever you like.
 
-# Options:
+These files should extend the defaults of the package. See:
+
+**example tsconfig.json**
+````json
+{
+  "extends": "./node_modules/@pluswerk/webpack-config/tsconfig",
+  "files": [
+    "pathToYourTsFiles/index.ts",
+    "pathToYourTsFiles/types.d.ts",
+    "pathToYourTsFiles/vue-shims.d.ts",
+  ],
+  "include": [
+    "pathToYourTsFiles/**/*.ts",
+    "pathToYourTsFiles/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules/"
+  ],
+  "types": [
+    "node"
+  ]
+}
+````
+
+**example overwrite tslint.json**
+````json
+{
+  "extends": "./node_modules/@pluswerk/webpack-config/tslint.json"
+}
+````
+
+**example overwrite stylelint.config.js**
+````js
+module.exports = {
+  extends: './node_modules/@pluswerk/webpack-config/stylelint.config.js'
+}
+````
+
+
+# Options of build.settings.js:
 ````js
 module.exports = {
   directory: {
@@ -64,6 +103,8 @@ module.exports = {
   webpackConfig: {},
 }
 ````
+
+> !!! TIP: you can overwrite all the webpackConfig parameters within build.settings.js
 
 # Example .vue file
 
