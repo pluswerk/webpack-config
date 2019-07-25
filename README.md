@@ -61,14 +61,14 @@ These files should extend the defaults of the package. See:
 }
 ````
 
-**example overwrite tslint.json**
+**example to overwrite tslint.json**
 ````json
 {
   "extends": "./node_modules/@pluswerk/webpack-config/tslint.json"
 }
 ````
 
-**example overwrite stylelint.config.js**
+**example to overwrite stylelint.config.js**
 ````js
 module.exports = {
   extends: './node_modules/@pluswerk/webpack-config/stylelint.config.js'
