@@ -1,6 +1,33 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const scssPartial = [
+  {
+    loader: 'css-loader',
+    options: {
+      sourceMap: true,
+      importLoaders: 2,
+    },
+  },
+  {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+      ident: 'postcss',
+      plugins: loader => [
+        require('cssnano'),
+        require('autoprefixer'),
+      ]
+    }
+  },
+  {
+    loader: 'sass-loader',
+    options: {
+      sourceMap: true,
+    },
+  },
+];
+
 module.exports = (runDirectory, settings) => ({
   resolve: {
     extensions: ['.ts', '.js', '.vue'],
@@ -56,54 +83,21 @@ module.exports = (runDirectory, settings) => ({
       test: /\.vue-scss$/,
       use: [
         'vue-style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
+        ...scssPartial,
       ],
     },
     styleLoader: {
       test: /\.scss$/,
       use: [
         'style-loader',
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
+        ...scssPartial,
       ],
     },
     miniCssExtract: {
       test: /\.scss$/,
       use: [
         MiniCssExtractPlugin.loader,
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          },
-        },
+        ...scssPartial,
       ],
     },
     ts: (autoFix) => ({

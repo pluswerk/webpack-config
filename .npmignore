@@ -1,0 +1,5 @@
+.idea
+testApp
+.npmignore
+start.sh
+docker-compose.yml
