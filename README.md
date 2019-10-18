@@ -29,6 +29,34 @@ module.exports = {
     typescript: 'Typescript/',
     scss: 'Scss/',
     generated: 'Generated/',
+    publicPath: 'Generated/',
+  },
+  entry: {
+    main: ['./Typescript/index.ts', './Scss/index.scss']
+  }
+};
+````
+
+## Web Root != Project Root
+
+if your Project locks like this:
+````ls
+build.settings.js
+Typescript/...
+Scss/...
+public/index.html
+public/Generated/...
+````
+You must set the publicPath in your settings:
+
+**build.settings.js**
+````js
+module.exports = {
+  directory: {
+    typescript: 'Typescript/',
+    scss: 'Scss/',
+    generated: 'public/Generated/', //as seen from your build.settings.js
+    publicPath: 'Generated/', //as seen from the Browser
   },
   entry: {
     main: ['./Typescript/index.ts', './Scss/index.scss']
@@ -87,6 +115,7 @@ module.exports = {
     typescript: 'Typescript/',
     scss: 'Scss/',
     generated: 'Generated/',
+    publicPath: null, // same as 'directory.generated' by default
   },
   files: {
     tsConfig: './tsconfig.json',

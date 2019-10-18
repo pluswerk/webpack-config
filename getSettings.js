@@ -13,6 +13,7 @@ const defaultSettings = {
     typescript: 'Typescript/',
     scss: 'Scss/',
     generated: 'Generated/',
+    publicPath: null,
   },
   files: {
     tsConfig: resolvePath('tsconfig.json'),
@@ -36,5 +37,8 @@ module.exports = function () {
     throw new Error('You need to have a build.settings.js file at location: ' + buildSettingsFile + '.' + '\n' + (e.message || ''));
   }
   Object.assign(settings, buildSettings);
+  if (settings.directory.publicPath === null) {
+    settings.directory.publicPath = settings.directory.generated;
+  }
   return settings;
 };

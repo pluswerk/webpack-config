@@ -21,7 +21,7 @@ module.exports = (env, argv) => {
     entry: settings.entry,
     devtool: 'source-map',
     resolve: partialConfig.resolve,
-    output: partialConfig.output('/' + settings.directory.generated),
+    output: partialConfig.output('/' + settings.directory.publicPath),
     performance: partialConfig.performance,
     module: {
       rules: [

@@ -3,3 +3,4 @@ testApp
 .npmignore
 start.sh
 docker-compose.yml
+.yarn-metadata.json
