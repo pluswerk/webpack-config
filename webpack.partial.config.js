@@ -72,6 +72,7 @@ module.exports = (runDirectory, settings) => ({
       syntax: 'scss',
       files: settings.directory.scss.replace(/(\/)$/g, '') + '/**/*.{vue-scss,vue,htm,html,css,sss,less,scss,sass}',
       fix: autoFix,
+      lintDirtyModulesOnly: true
     }),
   },
   rules: {
