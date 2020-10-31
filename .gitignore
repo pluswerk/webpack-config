@@ -1,2 +1,7 @@
 /.idea
-/node_modules
+node_modules
+yarn.lock
+.yarn-metadata.json
+docker-compose.yml
+start.sh
+testApp
