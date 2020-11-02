@@ -36,7 +36,7 @@ module.exports = (env, argv) => {
         filename: '[name].css?bust=[contenthash]',
         chunkFilename: '[id].css',
       }),
-      new StyleLintPlugin(partialConfig.plugins.stylelint(autoFix)),
+      new StyleLintPlugin(partialConfig.plugins.stylelint(autoFix, 'build')),
       new VueLoaderPlugin(),
       new webpack.DefinePlugin(settings.definePlugin || {}),
     ],

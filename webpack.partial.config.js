@@ -67,12 +67,12 @@ module.exports = (runDirectory, settings) => ({
     },
   },
   plugins: {
-    stylelint: (autoFix) => ({
+    stylelint: (autoFix, mode) => ({
       configFile: settings.files.stylelint,
       syntax: 'scss',
       files: settings.directory.scss.replace(/(\/)$/g, '') + '/**/*.{vue-scss,vue,htm,html,css,sss,less,scss,sass}',
       fix: autoFix,
-      lintDirtyModulesOnly: true
+      lintDirtyModulesOnly: mode === 'serve'
     }),
   },
   rules: {

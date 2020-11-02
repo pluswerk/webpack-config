@@ -33,7 +33,7 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [
-      new StyleLintPlugin(partialConfig.plugins.stylelint(autoFix)),
+      new StyleLintPlugin(partialConfig.plugins.stylelint(autoFix, 'serve')),
       new VueLoaderPlugin(),
       new webpack.DefinePlugin(settings.definePlugin || {}),
     ],
